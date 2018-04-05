@@ -3,8 +3,13 @@ import React from 'react';
 
 class ButtonSelectLimit extends React.Component{
       render(){
+        if(this.props.state.activeElem === this.props.item){
+          return(
+            <li className='uk-active'><button>{this.props.item}</button></li>
+          )
+        }
         return(
-          <li className={this.props.className}><button>{this.props.item}</button></li>
+          <li><button>{this.props.item}</button></li>
         )
       }
 }
