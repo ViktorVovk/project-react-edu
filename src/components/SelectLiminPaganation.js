@@ -5,26 +5,24 @@ class SelectLiminPaganation extends React.Component{
   constructor(props){
     super(props)
       this.state={
-          addClassName: true
+          activeElem: 10
       }
       this.onChangeClickLimit = this.onChangeClickLimit.bind(this);
   }
   onChangeClickLimit(event){
       this.props.selectLimit(+event.target.innerText)
-      console.log(event.target.parentElement)
       this.setState({
-        addClassName: !this.state.addClassName
+        activeElem: +event.target.innerText
       })
 
   }
   render(){
-    const CLASSNAME = this.state.addClassName ? "uk-active" : "";
     return(
       <div>
       <p>Колличество постов на странице:</p>
       <ul className="uk-subnav uk-subnav-pill" onClick={this.onChangeClickLimit}>
             {[10,15,20].map(item=>{
-              return <ButtonSelectLimit key={item} item={item} className={CLASSNAME}/>
+              return <ButtonSelectLimit key={item} item={item} state={this.state}/>
             })}
       </ul>
       </div>
@@ -33,19 +31,3 @@ class SelectLiminPaganation extends React.Component{
 }
 
 export default SelectLiminPaganation
-
-
-
-/*
-event.currentTarget.childNodes.forEach(item=>{
-  item.classList.remove("uk-active");
-})
-event.target.parentElement.className = "uk-active";
-
-
-<li className="uk-active"><button>10</button></li>
-<li><button>15</button></li>
-<li><button>20</button></li>
-
-
-*/
